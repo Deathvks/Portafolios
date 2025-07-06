@@ -25,9 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     phoneLink.addEventListener('click', (event) => {
       event.preventDefault();
-
       navigator.clipboard.writeText(phoneNumber).then(() => {
-
         const notification = document.createElement('div');
         notification.textContent = '¡Teléfono copiado al portapapeles!';
 
@@ -68,5 +66,19 @@ document.addEventListener('DOMContentLoaded', () => {
         console.error('Error al intentar copiar el número de teléfono:', err);
       });
     });
+  }
+
+  // --- Mstrar el Navbar al hacer scroll ---
+  const navbar = document.getElementById('navbar');
+  if (navbar) {
+    window.onscroll = function () {
+      if (document.body.scrollTop > 150 || document.documentElement.scrollTop > 150) {
+        navbar.style.opacity = "1";
+        navbar.style.transform = "translateY(0)";
+      } else {
+        navbar.style.opacity = "0";
+        navbar.style.transform = "translateY(-100%)";
+      }
+    };
   }
 });

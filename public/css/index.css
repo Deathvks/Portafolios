@@ -51,6 +51,53 @@ a {
   color: #e5e7eb;
 }
 
+/* --- Barra de Navegación --- */
+#navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+  padding: 1rem 0;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+
+  /* Efecto Glassmorphism */
+  background-color: rgba(15, 15, 20, 0.7);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+
+  /* Transición para que aparezca suavemente */
+  opacity: 0;
+  transform: translateY(-100%);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+#navbar a {
+  color: #e5e7eb;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+#navbar a:hover {
+  color: #8cb4ff; /* El color de acento que ya usas */
+}
+
+/* --- Media Query para dispositivos pequeños --- */
+@media (max-width: 768px) {
+  #navbar {
+    gap: 1.5rem; /* Reduce el espacio en móviles */
+    justify-content: space-around; /* Opcional: distribuye mejor los enlaces */
+  }
+}
+
+/* Opcional: añade scroll-behavior para un desplazamiento suave */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px; /* Evita que el navbar tape los títulos */
+}
+
 /* --- Estilos para Animación de Scroll --- */
 .fade-in-section {
   opacity: 0;
