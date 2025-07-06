@@ -87,15 +87,15 @@ a {
 /* --- Media Query para dispositivos pequeños --- */
 @media (max-width: 768px) {
   #navbar {
-    gap: 1.5rem; /* Reduce el espacio en móviles */
-    justify-content: space-around; /* Opcional: distribuye mejor los enlaces */
+    gap: 1.5rem;
+    justify-content: space-around;
   }
 }
 
 /* Opcional: añade scroll-behavior para un desplazamiento suave */
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 80px; /* Evita que el navbar tape los títulos */
+  scroll-padding-top: 80px;
 }
 
 /* --- Estilos para Animación de Scroll --- */
