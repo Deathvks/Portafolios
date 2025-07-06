@@ -1,0 +1,431 @@
+/* --- Estilos Generales y Fondo --- */
+@keyframes move-orb {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  25% {
+    transform: translate(40vw, 20vh) scale(1.2);
+  }
+  50% {
+    transform: translate(10vw, 50vh) scale(0.8);
+  }
+  75% {
+    transform: translate(-30vw, 30vh) scale(1.1);
+  }
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  background-color: #08080d;
+  color: #e5e7eb;
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  text-align: justify;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 15%;
+  left: 25%;
+  width: 350px;
+  height: 350px;
+  z-index: -1;
+  background: radial-gradient(
+    circle,
+    rgba(59, 130, 246, 0.25),
+    transparent 70%
+  );
+  border-radius: 50%;
+  filter: blur(120px);
+  animation: move-orb 30s infinite linear;
+}
+
+a {
+  text-decoration: none;
+  color: #e5e7eb;
+}
+
+/* --- Estilos para Animación de Scroll --- */
+.fade-in-section {
+  opacity: 0;
+  transform: translateY(25px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.fade-in-section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* --- Contenedor del Header --- */
+#header-container {
+  max-width: 1152px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  margin: 0 auto;
+  padding: 3rem 1.5rem;
+}
+
+/* --- Bloque de Información del Header --- */
+#header-info {
+  display: flex;
+  flex-direction: column;
+}
+
+#header-info h1 {
+  font-size: 3rem;
+  font-weight: 800;
+  margin: 0;
+  color: white;
+  text-shadow: 0 0 15px rgba(255, 255, 255, 0.15);
+}
+
+.header-profession {
+  color: #8cb4ff;
+  font-size: 1.25rem;
+  font-weight: 500;
+  margin: 0.5rem 0 0 0;
+}
+
+#header-info p {
+  max-width: 42rem;
+  line-height: 1.6;
+  margin-top: 1rem;
+  color: #b0b8c4;
+}
+
+/* --- Enlaces de Contacto --- */
+#header-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+#header-links a {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  background-color: rgba(30, 30, 40, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  font-weight: 500;
+  transition: all 0.3s ease-out;
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
+}
+
+#header-links a:hover {
+  background-color: rgba(59, 130, 246, 0.3);
+  transform: translateY(-4px);
+  border-color: rgba(139, 179, 255, 0.4);
+}
+
+#header-links a i {
+  margin-right: 0.5rem;
+}
+
+/* --- Foto de Perfil --- */
+.photo-cv {
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 30px -5px rgba(59, 130, 246, 0.3);
+}
+
+/* --- Sección de Proyecto Destacado --- */
+#project-section-container {
+  max-width: 1152px;
+  margin: 2.5rem auto 0 auto;
+  padding: 0 1.5rem;
+}
+
+#project-section-container > h1 {
+  font-size: 1.875rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 2rem;
+  color: white;
+}
+
+#project-section,
+.experience-card,
+#skills-section {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.05) 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  -webkit-backdrop-filter: blur(24px);
+  backdrop-filter: blur(24px);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+  border-radius: 1.75rem;
+  padding: 2.5rem;
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+#project-section:hover,
+.experience-card:hover,
+#skills-section:hover {
+  box-shadow: inset 0 0 0 1px rgba(139, 179, 255, 0.4),
+    0 10px 30px -5px rgba(0, 0, 0, 0.4);
+  transform: translateY(-8px) scale(1.02);
+}
+
+/* Estilos para el enlace de GitHub en el proyecto */
+.project-title-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.project-github-link {
+  color: #9ca3af;
+  font-size: 1.75rem;
+  transition: all 0.3s ease-out;
+}
+.project-github-link:hover {
+  color: #8cb4ff;
+  transform: scale(1.15) rotate(-5deg);
+}
+
+/* Información del Proyecto */
+#project-section-info h1 {
+  font-size: 1.5rem;
+  color: #8cb4ff;
+  margin: 0;
+}
+#project-section-info h3 {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #d1d5db;
+  margin: 0.25rem 0 1rem 0;
+}
+#project-section-info p {
+  margin-top: 1.5rem;
+  line-height: 1.7;
+  color: #b0b8c4;
+}
+p.project-subtitle {
+  color: #d1d5db;
+  font-weight: 600;
+  margin-top: 2rem;
+  margin-bottom: 0.5rem;
+}
+#project-section-info ul {
+  list-style: disc;
+  padding-left: 1.25rem;
+  margin: 0.5rem 0 0 0;
+  color: #b0b8c4;
+  line-height: 1.8;
+}
+
+/* --- Sección de Tecnologías --- */
+#project-section-tech {
+  margin-top: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.tech-tag {
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.4rem 0.8rem;
+  border-radius: 8px;
+  background-color: rgba(59, 130, 246, 0.15);
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  color: #adcaff;
+  opacity: 0.9;
+  transition: all 0.3s ease-out;
+}
+.tech-tag:hover {
+  opacity: 1;
+  transform: translateY(-3px);
+  background-color: rgba(59, 130, 246, 0.25);
+}
+
+/* --- Galería de Imágenes del Proyecto --- */
+#project-section-gallery {
+  margin-top: 2.5rem;
+  padding-top: 2.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  width: 100%;
+}
+#project-section-gallery h4 {
+  text-align: center;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 2rem;
+}
+.project-screenshots {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+.project-screenshots img {
+  width: 220px;
+  height: auto;
+  border-radius: 1rem;
+  object-fit: cover;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: transform 0.3s ease-out;
+}
+.project-screenshots img:hover {
+  transform: scale(1.05);
+}
+
+/* --- Sección de Experiencia y Formación --- */
+#experience-section-container {
+  max-width: 1152px;
+  margin: 4rem auto 0 auto;
+  padding: 0 1.5rem;
+}
+#experience-grid {
+  display: grid;
+  gap: 4rem;
+  grid-template-columns: 1fr;
+}
+.experience-column h2 {
+  font-size: 1.875rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 2rem;
+  color: white;
+}
+.experience-card {
+  padding: 2.5rem; /* Ajustado para consistencia */
+  margin-bottom: 2rem;
+  text-align: left;
+}
+.experience-card h3 {
+  font-size: 1.125rem;
+  color: #8cb4ff;
+  margin: 0;
+}
+.experience-card .experience-date {
+  font-size: 0.875rem;
+  color: #9ca3af;
+  margin: 0.25rem 0 0.75rem 0;
+}
+.experience-card .experience-description {
+  margin: 0;
+  color: #b0b8c4;
+  line-height: 1.6;
+  text-align: justify;
+}
+
+/* --- Sección de Aptitudes y Competencias --- */
+#skills-section-container {
+  max-width: 1152px;
+  margin: 4rem auto 0 auto;
+  padding: 0 1.5rem;
+}
+#skills-section-container > h1 {
+  font-size: 1.875rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 2rem;
+  color: white;
+}
+#skills-section {
+  padding: 2.5rem;
+}
+#skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+  gap: 1.5rem;
+  text-align: center;
+}
+.skill-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.5rem;
+  transition: transform 0.2s ease-out;
+}
+.skill-item:hover {
+  transform: scale(1.1) translateY(-3px);
+}
+.skill-name {
+  font-weight: 600;
+  color: white;
+}
+.skill-category {
+  font-size: 0.75rem;
+  color: #9ca3af;
+}
+
+/* --- Footer --- */
+#footer-container {
+  max-width: 1152px;
+  margin: 4rem auto 0 auto;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* --- Media Queries --- */
+@media (max-width: 1152px) {
+  #header-container,
+  #project-section-container,
+  #skills-section-container,
+  #experience-section-container,
+  #footer-container {
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+}
+@media (max-width: 1024px) {
+  .photo-cv {
+    width: 200px;
+    height: 200px;
+  }
+}
+@media (min-width: 768px) {
+  #experience-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 768px) {
+  #header-container {
+    flex-direction: column;
+    text-align: center;
+  }
+  #header-info p {
+    text-align: justify;
+  }
+  #header-links {
+    justify-content: center;
+  }
+  .photo-cv {
+    width: 180px;
+    height: 180px;
+    margin-top: 1rem;
+  }
+  #experience-grid {
+    gap: 2rem;
+  }
+  #project-section,
+  #skills-section,
+  .experience-card {
+    padding: 2rem;
+  }
+}
+@media (max-width: 480px) {
+  #header-info h1 {
+    font-size: 2.2rem;
+  }
+}
