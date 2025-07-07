@@ -1,4 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
+
+  history.scrollRestoration = "manual";
+
   // --- Animación de secciones al hacer scroll ---
   const sectionsToAnimate = document.querySelectorAll(".fade-in-section");
   if (sectionsToAnimate.length > 0) {
@@ -84,7 +87,7 @@ document.addEventListener("DOMContentLoaded", () => {
     window.addEventListener("scroll", () => {
       let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
-      // Lógica para mostrar/ocultar la barra de navegación
+      // Mstrar/ocultar la barra de navegación
       if (scrollTop > lastScrollTop && scrollTop > 150) {
         // Scroll hacia abajo
         navbar.style.opacity = "0";
@@ -99,7 +102,7 @@ document.addEventListener("DOMContentLoaded", () => {
           navbar.style.transform = "translateY(-100%)";
         }
       }
-      lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // Evita valores negativos
+      lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
     });
   }
 
