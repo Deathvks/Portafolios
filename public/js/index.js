@@ -68,17 +68,65 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // --- Mstrar el Navbar al hacer scroll ---
+  // --- Lógica del Navbar y Menú Móvil ---
   const navbar = document.getElementById('navbar');
+  const menuButton = document.getElementById('mobile-menu-button');
+  const navbarMenu = document.getElementById('navbar-menu');
+
   if (navbar) {
-    window.onscroll = function () {
-      if (document.body.scrollTop > 150 || document.documentElement.scrollTop > 150) {
-        navbar.style.opacity = "1";
-        navbar.style.transform = "translateY(0)";
+    let lastScrollTop = 0;
+
+    window.addEventListener('scroll', () => {
+      let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+      // Lógica para mostrar/ocultar la barra de navegación
+      if (scrollTop > lastScrollTop && scrollTop > 150) {
+        // Scroll hacia abajo
+        navbar.style.opacity = '0';
+        navbar.style.transform = 'translateY(-100%)';
       } else {
-        navbar.style.opacity = "0";
-        navbar.style.transform = "translateY(-100%)";
+        // Scroll hacia arriba
+        if (scrollTop > 150) {
+          navbar.style.opacity = '1';
+          navbar.style.transform = 'translateY(0)';
+        } else {
+           navbar.style.opacity = '0';
+           navbar.style.transform = 'translateY(-100%)';
+        }
+      }
+      lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // Evita valores negativos
+    });
+  }
+
+  if (menuButton && navbarMenu) {
+    const menuIcon = menuButton.querySelector('i');
+    const menuLinks = navbarMenu.querySelectorAll('a');
+
+    const toggleMenu = () => {
+      const isActive = navbarMenu.classList.toggle('is-active');
+      menuButton.setAttribute('aria-expanded', isActive);
+
+      // Cambia el icono y gestiona el scroll del body
+      if (isActive) {
+        menuIcon.classList.remove('fa-bars');
+        menuIcon.classList.add('fa-times');
+        document.body.style.overflow = 'hidden';
+      } else {
+        menuIcon.classList.remove('fa-times');
+        menuIcon.classList.add('fa-bars');
+        document.body.style.overflow = '';
       }
     };
+
+    menuButton.addEventListener('click', toggleMenu);
+
+    // Cierra el menú al hacer clic en un enlace
+    menuLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        if (navbarMenu.classList.contains('is-active')) {
+          toggleMenu();
+        }
+      });
+    });
   }
 });

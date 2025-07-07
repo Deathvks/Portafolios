@@ -1,4 +1,10 @@
 /* --- Estilos Generales y Fondo --- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 @keyframes move-orb {
   0% {
     transform: translate(0, 0) scale(1);
@@ -49,6 +55,7 @@ body::before {
 a {
   text-decoration: none;
   color: #e5e7eb;
+  -webkit-tap-highlight-color: transparent;
 }
 
 /* --- Barra de Navegación --- */
@@ -57,10 +64,10 @@ a {
   top: 0;
   z-index: 1000;
   width: 100%;
-  padding: 1rem 0;
+  padding: 1rem 2rem;
   display: flex;
   justify-content: center;
-  gap: 2rem;
+  align-items: center;
 
   /* Efecto Glassmorphism */
   background-color: rgba(15, 15, 20, 0.7);
@@ -68,10 +75,15 @@ a {
   backdrop-filter: blur(10px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 
-  /* Transición para que aparezca suavemente */
+  /* Transición */
   opacity: 0;
   transform: translateY(-100%);
   transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+#navbar-menu {
+  display: flex;
+  gap: 2rem;
 }
 
 #navbar a {
@@ -81,18 +93,20 @@ a {
 }
 
 #navbar a:hover {
-  color: #8cb4ff; /* El color de acento que ya usas */
+  color: #8cb4ff;
 }
 
-/* --- Media Query para dispositivos pequeños --- */
-@media (max-width: 768px) {
-  #navbar {
-    gap: 1.5rem;
-    justify-content: space-around;
-  }
+#mobile-menu-button {
+  display: none; /* Oculto en escritorio */
+  background: none;
+  border: none;
+  color: #e5e7eb;
+  font-size: 1.5rem;
+  cursor: pointer;
+  z-index: 1002;
+  -webkit-tap-highlight-color: transparent;
 }
 
-/* Opcional: añade scroll-behavior para un desplazamiento suave */
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 80px;
@@ -229,7 +243,6 @@ html {
   transform: translateY(-8px) scale(1.02);
 }
 
-/* Estilos para el enlace de GitHub en el proyecto */
 .project-title-container {
   display: flex;
   align-items: center;
@@ -247,7 +260,6 @@ html {
   transform: scale(1.15) rotate(-5deg);
 }
 
-/* Información del Proyecto */
 #project-section-info h1 {
   font-size: 1.5rem;
   color: #8cb4ff;
@@ -353,7 +365,7 @@ p.project-subtitle {
   color: white;
 }
 .experience-card {
-  padding: 2.5rem; /* Ajustado para consistencia */
+  padding: 2.5rem;
   margin-bottom: 2rem;
   text-align: left;
 }
@@ -469,6 +481,40 @@ p.project-subtitle {
   #skills-section,
   .experience-card {
     padding: 2rem;
+  }
+
+  #navbar {
+    justify-content: flex-start;
+  }
+
+  #navbar-menu {
+    display: none;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(8, 8, 13, 0.95);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+
+    justify-content: center;
+    align-items: center;
+    gap: 2.5rem;
+    z-index: 1001;
+  }
+
+  #navbar-menu.is-active {
+    display: flex;
+  }
+
+  #navbar-menu a {
+    font-size: 1.5rem;
+  }
+
+  #mobile-menu-button {
+    display: block; /* Muestra el botón de hamburguesa */
   }
 }
 
