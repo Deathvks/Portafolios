@@ -39,16 +39,16 @@ body::before {
   position: fixed;
   top: 15%;
   left: 25%;
-  width: 350px;
-  height: 350px;
+  width: 450px;
+  height: 450px;
   z-index: -1;
   background: radial-gradient(
     circle,
-    rgba(59, 130, 246, 0.25),
-    transparent 70%
+    rgba(59, 130, 246, 0.3),
+    transparent 65%
   );
   border-radius: 50%;
-  filter: blur(120px);
+  filter: blur(110px);
   animation: move-orb 30s infinite linear;
 }
 
@@ -58,7 +58,7 @@ a {
   -webkit-tap-highlight-color: transparent;
 }
 
-/* --- Barra de Navegación --- */
+/* --- Barra de Navegación (Efecto Liquid Glass Mejorado) --- */
 #navbar {
   position: sticky;
   top: 0;
@@ -69,16 +69,20 @@ a {
   justify-content: center;
   align-items: center;
 
-  /* Efecto Glassmorphism */
-  background-color: rgba(15, 15, 20, 0.7);
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
+  /* Fondo de cristal tintado para asegurar contraste */
+  background: linear-gradient(
+    135deg,
+    rgba(10, 12, 18, 0.65),
+    rgba(10, 12, 18, 0.5)
+  );
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.15);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 
-  /* Transición */
-  opacity: 0;
   transform: translateY(-100%);
-  transition: opacity 0.5s ease, transform 0.5s ease;
+  transition: transform 0.4s ease-out;
 }
 
 #navbar-menu {
@@ -90,6 +94,8 @@ a {
   color: #e5e7eb;
   font-weight: 500;
   transition: color 0.3s ease;
+  /* Sombra sutil para mejorar la legibilidad sobre fondos claros */
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
 }
 
 #navbar a:hover {
@@ -219,13 +225,14 @@ html {
   color: white;
 }
 
+/* --- Tarjetas (Efecto Liquid Glass Mejorado) --- */
 #project-section,
 .experience-card,
 #skills-section {
   background: linear-gradient(
     135deg,
-    rgba(255, 255, 255, 0.05) 0%,
-    rgba(255, 255, 255, 0) 100%
+    rgba(255, 255, 255, 0.08) 0%,
+    rgba(255, 255, 255, 0.02) 100%
   );
   -webkit-backdrop-filter: blur(24px);
   backdrop-filter: blur(24px);
@@ -239,8 +246,8 @@ html {
 .experience-card:hover,
 #skills-section:hover {
   box-shadow: inset 0 0 0 1px rgba(139, 179, 255, 0.4),
-    0 10px 30px -5px rgba(0, 0, 0, 0.4);
-  transform: translateY(-8px) scale(1.02);
+    0 10px 40px -5px rgba(0, 0, 0, 0.5);
+  transform: translateY(-8px) scale(1.01);
 }
 
 .project-title-container {
@@ -498,7 +505,6 @@ p.project-subtitle {
     background: rgba(8, 8, 13, 0.95);
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
-
     justify-content: center;
     align-items: center;
     gap: 2.5rem;
