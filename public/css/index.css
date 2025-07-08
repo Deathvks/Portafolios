@@ -196,7 +196,7 @@ html {
 #header-links a:hover {
   transform: translateY(-4px);
   box-shadow: inset 0 0 0 1px rgba(139, 179, 255, 0.5),
-              0 5px 15px -3px rgba(0, 0, 0, 0.3);
+        0 5px 15px -3px rgba(0, 0, 0, 0.3);
 }
 
 #header-links a i {
@@ -497,8 +497,9 @@ p.project-subtitle {
     justify-content: flex-start;
   }
 
+  /* --- [INICIO] CAMBIOS PARA ANIMACIÓN DEL MENÚ MÓVIL --- */
   #navbar-menu {
-    display: none;
+    display: flex; 
     flex-direction: column;
     position: fixed;
     top: 0;
@@ -512,11 +513,24 @@ p.project-subtitle {
     align-items: center;
     gap: 2.5rem;
     z-index: 1001;
+    
+    /* Estado inicial (oculto) */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(-100%);
+    /* Al CERRAR: animar transform/opacity, y LUEGO (tras 0.4s) ocultar. */
+    transition: transform 0.4s ease-out, opacity 0.4s ease-out, visibility 0s 0.4s;
   }
 
   #navbar-menu.is-active {
-    display: flex;
+    /* Estado final (visible) */
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+    /* Al ABRIR: animar transform/opacity y hacer visible INMEDIATAMENTE (sin retraso). */
+    transition: transform 0.4s ease-out, opacity 0.4s ease-out, visibility 0s;
   }
+  /* --- [FIN] CAMBIOS PARA ANIMACIÓN DEL MENÚ MÓVIL --- */
 
   #navbar-menu a {
     font-size: 1.5rem;
